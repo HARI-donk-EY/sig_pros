@@ -3,7 +3,7 @@ from scipy import signal
 
 #read .wav file
 
-input_signal,fs = sf.read('Sound_Noise.wav')
+input_signal,fs = sf.read('sound_files/Sound_Noise.wav')
 
 #sampling frequency of Input signal
 
@@ -32,6 +32,6 @@ output_signal = signal.filtfilt(b, a, input_signal)
 #output signal = signal.lfilter(b, a, input signal)
 #write the output signal into .wav file
 
-sf.write('Sound_With_ReducedNoise.wav', output_signal, fs)
+sf.write('sound_files/Sound_With_ReducedNoise.wav', output_signal, fs)
 
 

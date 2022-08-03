@@ -151,34 +151,28 @@ sudo apt-get install libffi-dev libsndfile1 python3-scipy  python3-numpy python3
 sudo pip install cffi pysoundfile 
 \end{lstlisting}
 
+
 \section{Digital Filter}
-\begin{enumerate}[label=\thesection.\arabic*
-,ref=\thesection.\theenumi]
+\begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
+
 \item
 \label{prob:input}
 Download the sound file from  
 \begin{lstlisting}
-wget https://raw.githubusercontent.com/gadepall/ 
-EE1310/master/filter/codes/Sound_Noise.wav
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/2/sound_files/Sound_Noise.wav
 \end{lstlisting}
-%\href{http://tlc.iith.ac.in/img/sound/Sound_Noise.wav}{\url{http://tlc.iith.ac.in/img/sound/Sound_Noise.wav}}  
-%in the link given below.
-%\linebreak
+
 \item
 \label{prob:spectrogram}
 You will find a spectrogram at \href{https://academo.org/demos/spectrum-analyzer}{\url{https://academo.org/demos/spectrum-analyzer}}. 
-%\end{problem}
-%%
-%
-%%\onecolumn
-%%\input{./figs/fir}
-%\begin{problem}
+
 Upload the sound file that you downloaded in Problem \ref{prob:input} in the spectrogram  and play.  Observe the spectrogram. What do you find?
 \\
 %
 \solution There are a lot of yellow lines between 440 Hz to 5.1 KHz.  These represent the synthesizer key tones. Also, the key strokes
 are audible along with background noise.
 % By observing spectrogram, it clearly shows that tonal frequency is under 4kHz. And above 4kHz only noise is present.
+
 \item
 \label{prob:output}
 Write the python code for removal of out of band noise and execute the code.
@@ -192,11 +186,14 @@ Write the python code for removal of out of band noise and execute the code.
 %\label{fig:convolution encoder}
 %\end{figure}
 %\input{block_enc}
+
 \item
 The output of the python script in Problem \ref{prob:output} is the audio file Sound\_With\_ReducedNoise.wav. Play the file in the spectrogram in Problem \ref{prob:spectrogram}. What do you observe?
 \\
 \solution The key strokes as well as background noise is subdued in the audio.  Also,  the signal is blank for frequencies above 5.1 kHz.
 \end{enumerate}
+
+
 \section{Difference Equation}
 \begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
 \item Let
@@ -219,7 +216,7 @@ wget https://github.com/gadepall/EE1310/raw/master/filter/codes/xnyn.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \begin{center}
-\includegraphics[width=\columnwidth]{./figs/xnyn}
+\includegraphics[width=\columnwidth]{./figs/xnyn.png}
 \end{center}
 \captionof{figure}{}
 \label{fig:xnyn}	

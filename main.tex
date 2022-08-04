@@ -134,6 +134,7 @@ columns=fullflexible
      \def\topbox#1{\raisebox{-\baselineskip}[0in][0in]{#1}}
      \def\midbox#1{\raisebox{-0.5\baselineskip}[0in][0in]{#1}}
 \vspace{3cm}
+
 \title{\LARGE{Digital Signal Processing}}
 \author{\normalsize J Sai Sri Hari Vamshi\\ \footnotesize AI21BTECH11014}
 \date{}
@@ -164,14 +165,13 @@ wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/2/sound_files/Soun
 
 \item
 \label{prob:spectrogram}
-You will find a spectrogram at \href{https://academo.org/demos/spectrum-analyzer}{\url{https://academo.org/demos/spectrum-analyzer}}. 
+You will find a spectrogram at \href{https://academo.org/demos/spectrum-analyzer}{\url{https://academo.org/demos/spectrum-analyzer}}.
 
-Upload the sound file that you downloaded in Problem \ref{prob:input} in the spectrogram  and play.  Observe the spectrogram. What do you find?
+Upload the sound file that you downloaded in Problem \ref{prob:input} in the spectrogram  and play. Observe the spectrogram. What do you find?
 \\
 %
-\solution There are a lot of yellow lines between 440 Hz to 5.1 KHz.  These represent the synthesizer key tones. Also, the key strokes
-are audible along with background noise.
-% By observing spectrogram, it clearly shows that tonal frequency is under 4kHz. And above 4kHz only noise is present.
+\solution There are a lot of yellow lines between 440 Hz to 5.1 KHz. These represent the synthesizer key tones. Also, the key strokes
+are audible along with background noise.\\
 
 \item
 \label{prob:output}
@@ -179,28 +179,28 @@ Write the python code for removal of out of band noise and execute the code.
 \\
 \solution
 \lstinputlisting{./codes/2/bandrm.py}
-%\begin{figure}[h]
-%\centering
-%\includegraphics[width=\columnwidth]{enc_block_diag.png}
-%\caption{}
-%\label{fig:convolution encoder}
-%\end{figure}
-%\input{block_enc}
+\ \\
+
 
 \item
-The output of the python script in Problem \ref{prob:output} is the audio file Sound\_With\_ReducedNoise.wav. Play the file in the spectrogram in Problem \ref{prob:spectrogram}. What do you observe?
+The output of the python script in Problem \ref{prob:output} is the audio file Sound\_With\_ReducedNoise.wav. \\Play the file in the spectrogram in Problem \ref{prob:spectrogram}. What do you observe?
 \\
 \solution The key strokes as well as background noise is subdued in the audio.  Also,  the signal is blank for frequencies above 5.1 kHz.
+
 \end{enumerate}
 
 
 \section{Difference Equation}
 \begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
+
+
 \item Let
 \begin{equation}
 x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1}
 \end{equation}
-Sketch $x(n)$.
+Sketch $x(n)$.\\
+
+
 \item Let
 \begin{multline}
 \label{eq:iir_filter}
@@ -210,17 +210,189 @@ y(n) + \frac{1}{2}y(n-1) = x(n) + x(n-2),
 \end{multline}
 Sketch $y(n)$.
 \\
-\solution The following code yields Fig. \ref{fig:xnyn}.
+\solution The following code yields Fig. \ref{fig:xnyn.png}.
 \begin{lstlisting}
-wget https://github.com/gadepall/EE1310/raw/master/filter/codes/xnyn.py
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/3/xnyn.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\columnwidth]{./figs/xnyn.png}
 \end{center}
 \captionof{figure}{}
-\label{fig:xnyn}	
+\label{fig:xnyn.png}	
 \end{figure}
+
+\end{enumerate}
+
+
+\section{$Z$-Transform}
+\begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
+
+\item The $Z$-transform of $x(n)$ is defined as
+\begin{equation}
+\label{eq:z_trans}
+X(z)={\mathcal {Z}}\{x(n)\}=\sum _{n=-\infty }^{\infty }x(n)z^{-n}
+\end{equation}
+Show that
+\begin{equation}
+\label{eq:shift1}
+{\mathcal {Z}}\{x(n-1)\} = z^{-1}X(z)
+\end{equation}
+and find
+\begin{equation}
+	{\mathcal {Z}}\{x(n-k)\} 
+\end{equation}
+\solution From (\ref{eq:z_trans}),
+
+\begin{align}
+{\mathcal {Z}}\{x(n-1)\} & =\sum _{n=-\infty }^{\infty }x(n-1)z^{-n}\\
+&= \sum _{n=-\infty }^{\infty }x(n)z^{-n-1} = z^{-1}\sum _{n=-\infty }^{\infty }x(n)z^{-n}
+\end{align}
+
+resulting in \eqref{eq:shift1}. Similarly, it can be shown that
+
+\begin{equation}
+\label{eq:z_trans_shift}
+	{\mathcal {Z}}\{x(n-k)\} = z^{-k}X(z)
+\end{equation}
+
+\item Find
+
+\begin{equation}
+H(z) = \frac{Y(z)}{X(z)}
+\end{equation}
+
+from  \eqref{eq:iir_filter} assuming that the $Z$-transform is a linear operation.\\
+\solution  Applying \eqref{eq:z_trans_shift} in \eqref{eq:iir_filter},
+\begin{align}
+Y(z) + \frac{1}{2}z^{-1}Y(z) &= X(z)+z^{-2}X(z)
+\\
+\implies \frac{Y(z)}{X(z)} &= \frac{1 + z^{-2}}{1 + \frac{1}{2}z^{-1}}
+\label{eq:freq_resp}
+\end{align}
+\ \\
+
+
+\item Find the Z transform of 
+\begin{equation}
+\delta(n)
+=
+\begin{cases}
+1 & n = 0
+\\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+and show that the $Z$-transform of
+\begin{equation}
+\label{eq:unit_step}
+u(n)
+=
+\begin{cases}
+1 & n \ge 0
+\\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+is
+\begin{equation}
+U(z) = \frac{1}{1-z^{-1}}, \quad \abs{z} > 1
+\end{equation}
+\solution It is easy to show that
+\begin{equation}
+\delta(n) \ztrans 1
+\end{equation}
+and from \eqref{eq:unit_step},
+\begin{align}
+U(z) &= \sum _{n= 0}^{\infty}z^{-n}
+\\
+&=\frac{1}{1-z^{-1}}, \quad \abs{z} > 1
+\end{align}
+using the fomula for the sum of an infinite geometric progression.\\
+
+\item Show that 
+\begin{equation}
+\label{eq:anun}
+a^nu(n) \ztrans \frac{1}{1-az^{-1}} \quad \abs{z} > \abs{a}
+\end{equation}
+\solution From \eqref{eq:unit_step}, we get,
+
+\begin{equation}
+\label{eq:anuncs}
+a^nu(n)
+=
+\begin{cases}
+a^n & n \ge 0
+\\
+0 & \text{otherwise}
+\end{cases}
+\end{equation}
+
+from above, 
+\begin{align}
+U_a(z) &= \sum _{n= 0}^{\infty}a^nz^{-n}\\
+&= \sum _{n= 0}^{\infty}(az^{-1})^n = \frac{1}{1-az^{-1}}, \quad \abs{z} > 1
+\end{align}
+using the fomula for the sum of an infinite geometric progression.\\
+
+
+\item 
+Let
+\begin{equation}
+H\brak{e^{\j \omega}} = H\brak{z = e^{\j \omega}}.
+\end{equation}
+Plot $\abs{H\brak{e^{\j \omega}}}$.  Comment.  $H(e^{\j \omega})$ is
+known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$.
+\\
+\solution The following code plots Fig. \ref{fig:dtft}.
+\begin{lstlisting}
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/4/dtft.py
+\end{lstlisting}
+\ \\
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/dtft}
+\caption{$\abs{H\brak{e^{\j\omega}}}$}
+\label{fig:dtft}
+\end{figure}
+\end{enumerate}
+
+
+\section{Impulse Response}
+\begin{enumerate}[label=\thesection.\arabic*]
+
+\item \label{prob:impulse_resp}
+Find an expression for $h(n)$ using $H(z)$, given that 
+%in Problem \ref{eq:ztransab} and \eqref{eq:anun}, given that
+\begin{equation}
+\label{eq:impulse_resp}
+h(n) \ztrans H(z)
+\end{equation}
+and there is a one to one relationship between $h(n)$ and $H(z)$. $h(n)$ is known as the {\em impulse response} of the
+system defined by \eqref{eq:iir_filter}.
+\\
+\solution From \eqref{eq:freq_resp},
+\begin{align}
+H(z) &= \frac{1}{1 + \frac{1}{2}z^{-1}} + \frac{ z^{-2}}{1 + \frac{1}{2}z^{-1}}
+\\
+\implies h(n) &= \brak{-\frac{1}{2}}^{n}u(n) + \brak{-\frac{1}{2}}^{n-2}u(n-2)
+\end{align}
+using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
+
+\item Sketch $h(n)$. Is it bounded? Convergent? 
+\\
+\solution The following code plots Fig. \ref{fig:hn}.
+\begin{lstlisting}
+wget 
+\end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/hn}
+\caption{$h(n)$ as the inverse of $H(z)$}
+\label{fig:hn}
+\end{figure}
+
+
 \end{enumerate}
 
 \end{document}

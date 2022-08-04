@@ -259,6 +259,7 @@ resulting in \eqref{eq:shift1}. Similarly, it can be shown that
 \item Find
 
 \begin{equation}
+\label{eq:hzz}
 H(z) = \frac{Y(z)}{X(z)}
 \end{equation}
 
@@ -344,11 +345,12 @@ H\brak{e^{\j \omega}} = H\brak{z = e^{\j \omega}}.
 Plot $\abs{H\brak{e^{\j \omega}}}$.  Comment.  $H(e^{\j \omega})$ is
 known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$.
 \\
-\solution The following code plots Fig. \ref{fig:dtft}.
+\solution The following code plots Fig. \ref{fig:dtft}.\\
+
 \begin{lstlisting}
 wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/4/dtft.py
 \end{lstlisting}
-\ \\
+We can note that the graph in Fig. \ref{fig:dtft} is an even periodic function.
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{./figs/dtft}
@@ -356,6 +358,7 @@ wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/4/dtft.py
 \label{fig:dtft}
 \end{figure}
 \end{enumerate}
+
 
 
 \section{Impulse Response}
@@ -369,7 +372,7 @@ Find an expression for $h(n)$ using $H(z)$, given that
 h(n) \ztrans H(z)
 \end{equation}
 and there is a one to one relationship between $h(n)$ and $H(z)$. $h(n)$ is known as the {\em impulse response} of the
-system defined by \eqref{eq:iir_filter}.
+system defined by \eqref{eq:iir_filter}.\\Take $H(z)$ from \eqref{eq:hzz}
 \\
 \solution From \eqref{eq:freq_resp},
 \begin{align}
@@ -383,7 +386,7 @@ using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
 \\
 \solution The following code plots Fig. \ref{fig:hn}.
 \begin{lstlisting}
-wget 
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/5/hn.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
@@ -392,7 +395,70 @@ wget
 \label{fig:hn}
 \end{figure}
 
+\item 
+Compute and sketch $h(n)$ using 
+\begin{equation}
+\label{eq:iir_filter_h}
+h(n) + \frac{1}{2}h(n-1) = \delta(n) + \delta(n-2), 
+\end{equation}
+%
+This is the definition of $h(n)$.
+\\
+\solution The following code plots Fig. \ref{fig:hndef}. Note that this is the same as Fig. 
+\ref{fig:hn}. 
+%
+\begin{lstlisting}
+wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/hndef.py
+\end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/hndef}
+\caption{$h(n)$ from the definition}
+\label{fig:hndef}
+\end{figure}
+
+
+\item Compute 
+%
+\begin{equation}
+\label{eq:convolution}
+y(n) = x(n)*h(n) = \sum_{n=-\infty}^{\infty}x(k)h(n-k)
+\end{equation}
+%
+Comment. The operation in \eqref{eq:convolution} is known as
+{\em convolution}.
+%
+\\
+\solution The following code plots Fig. \ref{fig:ynconv}. Note that this is the same as 
+$y(n)$ in  Fig. 
+\ref{fig:xnyn}. 
+%
+\begin{lstlisting}
+wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/ynconv.py
+\end{lstlisting}
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/ynconv}
+\caption{$y(n)$ from the definition of convolution}
+\label{fig:ynconv}
+\end{figure}
+
+
+\item Show that
+\begin{equation}
+y(n) =  \sum_{n=-\infty}^{\infty}x(n-k)h(k)
+\end{equation}
+
+\solution 
+From \eqref{eq:convolution}, we substitute $k := n - k$ to get
+\begin{align}
+y\brak{n} &= \sum_{k=-\infty}^{\infty}x\brak{k}h\brak{n - k} \\
+		  &= \sum_{n - k=-\infty}^{\infty}x\brak{n - k}h\brak{k} \\
+		  &= \sum_{k=-\infty}^{\infty}x\brak{n - k}h\brak{k}
+\end{align}
 
 \end{enumerate}
+
+
 
 \end{document}

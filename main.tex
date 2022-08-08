@@ -214,6 +214,16 @@ Sketch $y(n)$.
 \begin{lstlisting}
 wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/3/xnyn.py
 \end{lstlisting}
+
+
+\item Repeat the above exercise using C code.\\
+\solution The following codes can be used, the C-code used to generate $y(n)$ and the plot yields the same  Figure as that of \ref{fig:xnyn.png}
+\begin{lstlisting}
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/3/xnyn.c
+
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/3/xnyn2.py
+\end{lstlisting}
+
 \begin{figure}[!ht]
 \begin{center}
 \includegraphics[width=\columnwidth]{./figs/xnyn.png}
@@ -350,7 +360,17 @@ known as the {\em Discret Time Fourier Transform} (DTFT) of $x(n)$.
 \begin{lstlisting}
 wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/4/dtft.py
 \end{lstlisting}
-We can note that the graph in Fig. \ref{fig:dtft} is an even periodic function.
+We can note that the graph in Fig. \ref{fig:dtft} is an even periodic function.\\
+From the equations \label{eq:hzz} and \label{eq:freq_resp} we get,
+\begin{align}
+\left|H\brak{e^{\j\omega}}\right| &= \left|\frac{1 + e^{-2\j\omega}}{1 + \frac{1}{2}e^{-\j\omega}}\right| \\
+&= \left|\frac{1 + \cos(-2\omega) + j\sin(-2\omega)}{1 + \frac{1}{2}(\cos(-\omega) + j\sin(-\omega))}\right|\\
+&= \sqrt{\frac{\brak{1 + \cos{2\omega}}^2 + \brak{\sin{2\omega}}^2}{\brak{1 + \frac{1}{2}\cos{\omega}}^2 + \brak{\frac{1}{2}\sin{\omega}}^2}}\\
+&= \sqrt{\frac{2\brak{1 + \cos{2\omega}}}{\frac{5}{4} + \cos{\omega}}} \\
+&= \sqrt{\frac{2\brak{2\cos^2{\omega}}}{\frac{5}{4} + \cos{\omega}}} \\
+&= \frac{4|\cos{\omega}|}{\sqrt{5 + 4\cos{\omega}}}
+\end{align}
+and so its fundamental period is $2\pi$.
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{./figs/dtft}
@@ -388,6 +408,7 @@ using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
 \begin{lstlisting}
 wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/5/hn.py
 \end{lstlisting}
+The plot is bounded and convergent.\\
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{./figs/hn}
@@ -408,7 +429,7 @@ This is the definition of $h(n)$.
 \ref{fig:hn}. 
 %
 \begin{lstlisting}
-wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/hndef.py
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/5/hndef.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
@@ -429,18 +450,18 @@ Comment. The operation in \eqref{eq:convolution} is known as
 {\em convolution}.
 %
 \\
-\solution The following code plots Fig. \ref{fig:ynconv}. Note that this is the same as 
+\solution The following code plots Fig. \ref{fig:ynconv.png}. Note that this is the same as 
 $y(n)$ in  Fig. 
-\ref{fig:xnyn}. 
+\ref{fig:xnyn.png}. 
 %
 \begin{lstlisting}
-wget https://raw.githubusercontent.com/gadepall/EE1310/master/filter/codes/ynconv.py
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/5/ynconv.py
 \end{lstlisting}
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=\columnwidth]{./figs/ynconv}
+\includegraphics[width=\columnwidth]{./figs/ynconv.png}
 \caption{$y(n)$ from the definition of convolution}
-\label{fig:ynconv}
+\label{fig:ynconv.png}
 \end{figure}
 
 

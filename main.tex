@@ -266,6 +266,21 @@ resulting in \eqref{eq:shift1}. Similarly, it can be shown that
 	{\mathcal {Z}}\{x(n-k)\} = z^{-k}X(z)
 \end{equation}
 
+\item Obtain $X(z)$ for $x(n)$ defined from 3.1.\\
+
+\solution From 3.1,
+\begin{align*}
+x(n) = \cbrak{\underset{\uparrow}{1},2,3,4,2,1}
+\end{align*}
+and from \eqref{eq:z_trans}, and for given $x(n)$ we have,
+
+\begin{align}
+X(n) &= {\mathcal{Z}}\{x(n)\}\\
+&= 1 + 2z^{-1} + 3z^{-2} + 4z^{-3} + 2z^{-4} + z^{-5}
+\end{align}
+
+
+
 \item Find
 
 \begin{equation}
@@ -370,15 +385,22 @@ From the equations \label{eq:hzz} and \label{eq:freq_resp} we get,
 &= \sqrt{\frac{2\brak{2\cos^2{\omega}}}{\frac{5}{4} + \cos{\omega}}} \\
 &= \frac{4|\cos{\omega}|}{\sqrt{5 + 4\cos{\omega}}}
 \end{align}
-and so its fundamental period is $2\pi$.
+and so its fundamental period is $2\pi$.\\
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{./figs/dtft}
 \caption{$\abs{H\brak{e^{\j\omega}}}$}
 \label{fig:dtft}
 \end{figure}
-\end{enumerate}
 
+
+\item Express $h(n)$ in terms of $H(e^{jw})$.\\
+\solution $h(n)$ is given by the inverse DTFT (IDTFT) of $H\brak{e^{\j\omega}}$
+\begin{align}
+h(n) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} H\brak{e^{j\omega}} e^{j\omega n} \ \text{d}\omega 
+\end{align}
+\ \\
+\end{enumerate}
 
 
 \section{Impulse Response}

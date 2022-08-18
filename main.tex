@@ -399,7 +399,32 @@ and so its fundamental period is $2\pi$.\\
 \begin{align}
 h(n) &= \frac{1}{2\pi} \int_{-\pi}^{\pi} H\brak{e^{j\omega}} e^{j\omega n} \ \text{d}\omega 
 \end{align}
-\ \\
+We can prove this from \eqref{eq:z_trans},
+\begin{align}
+H(e^{jw}) &= \sum_{k=-\infty}^\infty h(k) e^{-j\omega k}\\
+\end{align}
+multiplying both sides with $e^{-j\omega k}$ and integrating w.r.t. $\omega$.\\
+\begin{align}
+\int_{-\pi}^{\pi} H(e^{jw}) e^{j\omega k} \text{d}\omega &= \sum_{k=-\infty}^\infty h(k) \int_{-\pi}^{\pi} e^{-j\omega n} e^{j\omega k} \text{d}\omega \\
+&= \sum_{k=-\infty}^\infty h(k) \int_{-\pi}^{\pi} e^{-j\omega (n-k)}  \text{d}\omega
+\end{align}
+we know that $e^{-j\omega (n-k)}$ is an odd function so integration would be zero for all values of $\omega (n-k) \neq 0$, but $1$ if $\omega (n-k) = 0$.\\
+\begin{align*}
+\int_{-\pi}^{\pi} e^{-j\omega (n-k)}  \text{d}\omega =
+\begin{cases}
+0 & if n-k \neq 0\\
+1 & if n-k = 0
+\end{cases}
+\end{align*}
+From this we can complete the summation.\\
+
+\begin{align}
+\int_{-\pi}^{\pi} H(e^{jw}) e^{j\omega k} \text{d}\omega &= \sum_{k=-\infty}^\infty h(k) \int_{-\pi}^{\pi} e^{-j\omega (n-k)}  \text{d}\omega\\
+&= h(n) \int_{-\pi}^{\pi} \text{d}\omega\\
+& = h(n) 2\pi\\
+h(n) &= \frac{1}{2\pi}\int_{-\pi}^{\pi} H(e^{jw}) e^{j\omega k} \text{d}\omega 
+\end{align}
+Hence proved.\\
 \end{enumerate}
 
 

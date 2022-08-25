@@ -3,6 +3,7 @@
 \usepackage{setspace}
 \usepackage{gensymb}
 \usepackage{xcolor}
+\usepackage{polynom}
 \usepackage{caption}
 %\usepackage{subcaption}
 %\doublespacing
@@ -431,6 +432,38 @@ Hence proved.\\
 \section{Impulse Response}
 \begin{enumerate}[label=\thesection.\arabic*]
 
+\item Using long division, find
+\begin{align}
+	h(n), \quad n < 5
+\end{align}
+for H(z) in 
+\eqref{eq:freq_resp}.
+
+\solution
+\begin{equation}
+	H(z) = \frac{1 + z^{-2}}{1 + \frac12 z^{-1}}
+\end{equation}
+Substitute $z^{-1} = x$\\
+
+\polylongdiv{1+x^2}{1+\frac{1}{2} x}\\
+
+So, 
+
+\begin{align}
+H(z) & = -4 + 2z^{-1} + \frac{5}{1+ \frac{1}{2}z^{-1}}\\
+& = -4 + 2z^{-1} + 5\sum_{n=0}^{\infty}\left(\frac{-1}{2}\right)^n z^{-n}\\
+& = 1 - \frac{1}{2}z^{-1} + 5\sum_{n=2}^{\infty}\left(\frac{-1}{2}\right)^n z^{-n}\\
+& = \sum_{n=0}^{\infty}\left(\frac{-1}{2}\right)^n z^{-n} + 4\sum_{n=2}^{\infty}\left(\frac{-1}{2}\right)^n z^{-n}\\
+& = \sum_{n=-\infty}^{\infty}u(n)\left(\frac{-1}{2}\right)^n z^{-n} + \sum_{n=-\infty}^{\infty}u(n-2)\left(\frac{-1}{2}\right)^{n-2} z^{-n}
+\end{align}
+
+Therefore from \eqref{eq:z_trans},
+
+\begin{align}
+h(n) = & \left(\frac{-1}{2}\right)^nu(n) + \left(\frac{-1}{2}\right)^{n-2}u(n-2)
+\end{align}
+\ \\
+
 \item \label{prob:impulse_resp}
 Find an expression for $h(n)$ using $H(z)$, given that 
 %in Problem \ref{eq:ztransab} and \eqref{eq:anun}, given that
@@ -449,13 +482,28 @@ H(z) &= \frac{1}{1 + \frac{1}{2}z^{-1}} + \frac{ z^{-2}}{1 + \frac{1}{2}z^{-1}}
 \end{align}
 using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
 
-\item Sketch $h(n)$. Is it bounded? Convergent? 
+
+\item Sketch $h(n)$. Is it bounded? Justify theoretically. 
 \\
 \solution The following code plots Fig. \ref{fig:hn}.
 \begin{lstlisting}
 wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/5/hn.py
 \end{lstlisting}
-The plot is bounded and convergent.\\
+We know,\\
+\begin{align*}
+h(n) &= \brak{-\frac{1}{2}}^{n}u(n) + \brak{-\frac{1}{2}}^{n-2}u(n-2)
+\end{align*}
+then,
+\begin{align}
+\lim_{n\to\infty} h(n) &= \lim_{n\to\infty}\brak{-\frac{1}{2}}^{n}u(n) + \lim_{n\to\infty}\brak{-\frac{1}{2}}^{n-2}u(n-2)\\
+h(n) &=
+\begin{cases}
+5\left(\frac{-1}{2}\right)^n   & n \geq 2\\ \\
+\left(\frac{-1}{2}\right)^n    & 0 \leq n < 2\\ \\
+0 & n < 0
+\end{cases}
+\end{align}
+\ \\
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{./figs/hn}
@@ -463,10 +511,17 @@ The plot is bounded and convergent.\\
 \label{fig:hn}
 \end{figure}
 
+
+\item Is $h(n)$ convergent? Justify using ratio test.\\
+\solution
+\begin{align}
+h(n) &= \brak{-\frac{1}{2}}^{n}u(n) + \brak{-\frac{1}{2}}^{n-2}u(n-2)
+\end{align}
+If $L=\lim_{n\to\infty}\left|\frac{h(n+1)}{h(n)}\right| < 1$, then $h(n)$ is convergent.
 \item 
 Compute and sketch $h(n)$ using 
 \begin{equation}
-\label{eq:iir_filter_h}
+\label{•}el{eq:iir_filter_h}
 h(n) + \frac{1}{2}h(n-1) = \delta(n) + \delta(n-2), 
 \end{equation}
 %

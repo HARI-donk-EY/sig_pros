@@ -40,6 +40,8 @@
 %\usepackage[framemethod=tikz]{mdframed}
 \usepackage{listings}
 
+\let\vec\mathbf
+\newcommand{\myvec}[1]{\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}
 
 %\usepackage{stmaryrd}
 
@@ -481,7 +483,17 @@ H(z) &= \frac{1}{1 + \frac{1}{2}z^{-1}} + \frac{ z^{-2}}{1 + \frac{1}{2}z^{-1}}
 \implies h(n) &= \brak{-\frac{1}{2}}^{n}u(n) + \brak{-\frac{1}{2}}^{n-2}u(n-2)
 \end{align}
 using \eqref{eq:anun} and \eqref{eq:z_trans_shift}.
-
+Let,
+\begin{align}
+h(n) & = h_1(n) + h_2(n)
+\end{align}
+Where,
+\begin{align}
+h_1(n) &= \left(-\frac{1}{2}\right)^nu(n)\\
+h_1(n) &= \left(-\frac{1}{2}\right)^{n-2}u(n-2)
+\end{align}
+Then ROC of $h_1(n)$ and $h_2(n)$ will both be $|z|>|-\frac{1}{2}|$.\\
+Hence ROC of $H(z)$ is $|z|>\frac{1}{2}$\\
 
 \item Sketch $h(n)$. Is it bounded? Justify theoretically. 
 \\
@@ -543,7 +555,11 @@ Is the system defined by \eqref{eq:iir_filter} stable for the impulse response i
 \end{align}
 As $\sum_{n=-\infty}^{\infty}h(n)=\frac{4}{3}$ is less than $\infty$, the system defined by \eqref{eq:iir_filter} is stable for the impulse response in \eqref{eq:impulse_resp}.\\
 
-
+\item Verify the above result using a python code.
+\solution The following code determines if it is convergent or not:
+\begin{lstlisting}
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/5/new.py
+\end{lstlisting}
 
 \item 
 Compute and sketch $h(n)$ using 
@@ -566,7 +582,13 @@ wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/5/hndef.py
 \caption{$h(n)$ from the definition}
 \label{fig:hndef}
 \end{figure}
-
+Computing,
+\begin{align*}
+h(0)=1\\
+h(1)=-\frac{1}{2}h(0)\\
+h(2)=-\frac{1}{2}h(1)+1\\
+Parallely, h(n)=-\frac{1}{2}h(n-1)\\
+\end{align*}
 
 \item Compute 
 %
@@ -593,6 +615,18 @@ wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/5/ynconv.py
 \label{fig:ynconv.png}
 \end{figure}
 
+\item Express the above convolution using a toeplitz matrix.
+\solution
+\begin{align}
+\vec{y} = \vec{x} \circledast \vec{h}\\
+& \vec{y} = \myvec{ h_1 & 0 & . & . & . & 0 \\ h_2 & h_1 & . & . & . & 0 \\ h_3 & h_2 & h_1 & . & . & 0 \\ h_{m-1} & . & . & . & h_2 & h_1 \\ h_m & h_{m-1} &. & . & . & h_2 \\ . & . &. & . & . & . \\ . & . & . & . & . & . \\ 0 & 0 & . & . & . & h_m } \myvec{x_1 \\ x_2 \\ . \\ . \\ . \\ . \\ x_n}
+\end{align}
+\begin{align}
+\vec{y}&=\myvec{1 & 0&0 & 0 & 0 & 0 \\ \frac{-1}{2} & 1&0&0&0&0\\\frac{5}{4}&\frac{-1}{2}&1&0&0&0\\\frac{-5}{8}&\frac{5}{4}&\frac{-1}{2}&1&0&0\\\frac{5}{16}&\frac{-5}{8}&\frac{5}{4}&\frac{-1}{2}&1&0\\ \frac{-5}{32}&\frac{5}{16}&\frac{-5}{8}&\frac{5}{4}&\frac{-1}{2}&1\\\frac{5}{64}&\frac{-5}{32}&\frac{5}{16}&\frac{-5}{8}&\frac{5}{4}&\frac{-1}{2}\\ 0&\frac{5}{64}&\frac{-5}{32}&\frac{5}{16}&\frac{-5}{8}&\frac{5}{4}\\0&0&\frac{5}{64}&\frac{-5}{32}&\frac{5}{16}&\frac{-5}{8}\\0&0&0&\frac{5}{64}&\frac{-5}{32}&\frac{5}{16}\\0&0&0&0&\frac{5}{64}&\frac{-5}{32}\\0&0&0&0&0&\frac{5}{64}}\myvec{1\\2\\3\\4\\2\\1}
+&=\myvec{1.   \\     1.5\\3.25\\4.375\\2.8125   \\3.59375\\   0.203125\\
+  0.9375  \\ -0.390625 \\ 0.3125   \\ 0.     \\	   0.078125}
+\end{align}
+And this is what we got in \eqref{eq:convolution}
 
 \item Show that
 \begin{equation}
@@ -606,9 +640,31 @@ y\brak{n} &= \sum_{k=-\infty}^{\infty}x\brak{k}h\brak{n - k} \\
 		  &= \sum_{n - k=-\infty}^{\infty}x\brak{n - k}h\brak{k} \\
 		  &= \sum_{k=-\infty}^{\infty}x\brak{n - k}h\brak{k}
 \end{align}
-
+\ \\
 \end{enumerate}
 
+\section{DFT}
+\begin{enumerate}[label=\thesection.\arabic*]
 
+\item
+Compute
+\begin{equation}
+X(k) \define \sum _{n=0}^{N-1}x(n) e^{-\j2\pi kn/N}, \quad k = 0,1,\dots, N-1
+\end{equation}
+and $H(k)$ using $h(n)$.
+
+\solution The following code plots Fig. \ref{fig:xkhk}. 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/xkhk}
+\caption{$X(k) ,H(k)$ from the DFT}
+\label{fig:xkhk}
+\end{figure}
+\begin{lstlisting}
+wget https://github.com/LokeshBadisa/EE3900-Linear-Systems-and-Signal-Processing/blob/main/codes/xkhkdft.py
+
+
+\end{lstlisting}
+\end{enumerate}
 
 \end{document}

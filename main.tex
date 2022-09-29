@@ -653,7 +653,14 @@ X(k) \define \sum _{n=0}^{N-1}x(n) e^{-\j2\pi kn/N}, \quad k = 0,1,\dots, N-1
 \end{equation}
 and $H(k)$ using $h(n)$.
 
-\solution The following code plots Fig. \ref{fig:xkhk}. 
+\solution 
+The following code generates the data required for plotting.
+\begin{lstlisting}
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/header.h
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/XkHk_dat.c 
+\end{lstlisting}
+
+The following code plots Fig. \ref{fig:xkhk}. 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=\columnwidth]{./figs/xkhk}
@@ -661,10 +668,27 @@ and $H(k)$ using $h(n)$.
 \label{fig:xkhk}
 \end{figure}
 \begin{lstlisting}
-wget https://github.com/LokeshBadisa/EE3900-Linear-Systems-and-Signal-Processing/blob/main/codes/xkhkdft.py
-
-
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/XkHk.py
 \end{lstlisting}
+\ \\
+\item
+Compute 
+\begin{equation}
+Y(k) = X(k)H(k)
+\end{equation}
+\solution The following code plots Fig. \ref{fig:yk}. 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\columnwidth]{./figs/yk}
+\caption{$Y(k)$ from the DFT}
+\label{fig:yk}
+\end{figure}
+\begin{lstlisting}
+wget https://github.com/LokeshBadisa/EE3900-Linear-Systems-and-Signal-Processing/blob/main/codes/ykdft.py
+\end{lstlisting}
+
+
+
 \end{enumerate}
 
 \end{document}

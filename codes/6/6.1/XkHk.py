@@ -24,7 +24,7 @@ plt.title('')
 plt.xlabel('$k$')
 plt.ylabel('$H(k)$')
 plt.grid()# minor
-plt.savefig('../../figs/xkhk.pdf')
+plt.savefig('../../../figs/xkhk.pdf')
 plt.show()   
 
 

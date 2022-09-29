@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 #include<stdlib.h>
-#include "header.h"
+#include "../header.h"
 
 
 #define pi 3.14159
@@ -10,10 +10,10 @@ int main(){
 
 int N=20;
 
-double *xn = readData("xn.dat",14);
+double *xn = readData("../xn.dat",14);
 
 
-double *hn = readData("hn.dat",N);
+double *hn = readData("../hn.dat",N);
 
 
 double *Xr=(double*)malloc(N*sizeof(double));

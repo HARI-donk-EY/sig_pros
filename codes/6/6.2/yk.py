@@ -1,6 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+# using termux
+import subprocess
+import shlex
+
 N = 20
 
 Y = np.loadtxt('ykreal.dat')
@@ -11,6 +15,7 @@ plt.xlabel('$k$')
 plt.ylabel('$Y(k)$')
 plt.grid()
 
-plt.savefig('../../../figs/yk.png')
-
-plt.show()
+plt.savefig('../../../figs/yk.pdf')
+plt.savefig('../../../figs/yk.eps')
+#plt.show()
+subprocess.run(shlex.split("termux-open ../../../figs/yk.pdf"))

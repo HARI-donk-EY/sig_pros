@@ -657,7 +657,7 @@ and $H(k)$ using $h(n)$.
 The following code generates the data required for plotting.
 \begin{lstlisting}
 wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/header.h
-wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/XkHk_dat.c 
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/6.1/XkHk_dat.c 
 \end{lstlisting}
 
 The following code plots Fig. \ref{fig:xkhk}. 
@@ -668,7 +668,7 @@ The following code plots Fig. \ref{fig:xkhk}.
 \label{fig:xkhk}
 \end{figure}
 \begin{lstlisting}
-wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/XkHk.py
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/6.1/XkHk.py
 \end{lstlisting}
 \ \\
 \item
@@ -683,10 +683,22 @@ Y(k) = X(k)H(k)
 \caption{$Y(k)$ from the DFT}
 \label{fig:yk}
 \end{figure}
+The data can be obtained from
 \begin{lstlisting}
-wget https://github.com/LokeshBadisa/EE3900-Linear-Systems-and-Signal-Processing/blob/main/codes/ykdft.py
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/header.h
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/6.2/y(k)dat.c  
 \end{lstlisting}
-
+The plotting is done by
+\begin{lstlisting}
+wget https://github.com/HARI-donk-EY/sig_pros/blob/main/codes/6/6.2/yk.py
+\end{lstlisting}
+\ \\
+\item Compute
+\begin{equation}
+ y\brak{n}={\frac {1}{N}}\sum _{k=0}^{N-1}Y\brak{k}\cdot e^{\j 2\pi kn/N},\quad n = 0,1,\dots, N-1
+\end{equation}
+\solution The following code plots Fig. \ref{fig:ynconv}. Note that this is the same as 
+$y(n)$ in  Fig. 
 
 
 \end{enumerate}

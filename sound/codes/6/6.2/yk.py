@@ -17,5 +17,5 @@ plt.grid()
 
 plt.savefig('../../../figs/yk.pdf')
 plt.savefig('../../../figs/yk.eps')
-#plt.show()
-subprocess.run(shlex.split("termux-open ../../../figs/yk.pdf"))
+plt.show()
+#subprocess.run(shlex.split("termux-open ../../../figs/yk.pdf"))

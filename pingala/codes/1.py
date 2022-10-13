@@ -1,43 +1,48 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import math
+import scipy
+
+def an(n0, alpha, beta):
+    if n0<=0:
+        return 0.0
+    else:
+        return(alpha**n0 - beta**n0)/(alpha - beta)
+
+vec_an = scipy.vectorize(an)
+
+def bn(n0, alpha, beta):
+    if n0>=1:
+        return an(n0-1, alpha, beta)
+    else:
+        return 0.0
+
+def f1(n, alpha, beta):
+    return an(n+2, alpha, beta)
+
+vec_f1 = scipy.vectorize(f1)
+
+def f2(n, alpha, beta):
+    return np.sum(vec_an(np.arange(n), alpha, beta))
+
+vec_f2 = scipy.vectorize(f2)
 
 alpha = (1 + np.sqrt(5))/2
 beta = (1 - np.sqrt(5))/2
 
-#Problem 1.1
+n = np.arrange(1,100)
 
-n = 100
-k = np.linspace(1, n, n)
-ak = (alpha**k - beta**k)/(alpha - beta)
-sak = np.cumsum(ak)
+l1 = vec_f1(n,alpha,beta)
+l2 = vec_f2(n,alpha,beta)
 
-if (np.allclose(sak[:98], ak[2:] - 1)): print("1.1 correct")
-else: print("1.1 incorrect")
+plt.subplot(211)
+plt.plot(n, l1, label=r'$a_{n+2}-1$', color = 'r')
+plt.grid()
+plt.legend()
+plt.subplot(212)
+plt.plot(n, l2, label=r'$sum_{k=1}^{n}a_{k}$')
+plt.grid()
+plt.legend()
+plt.savefig('../figs/1_1.png')
 
 
-#Problem 1.2
-
-t = 10**k
-ta = ak*(1/t)
-eps = 1e-6
-lim = 10/89
-sta = np.cumsum(ta)
-
-if (abs(sta[-1] - lim) < eps): print("1.2 correct")
-else: print("1.2 incorrect")
-
-#Problem 1.3
-
-b = ak[2:] + ak[:98]
-b = np.pad(b, (1, 0), 'constant', constant_values=(1, 0))
-b_new = alpha**k + beta**k
-
-if (np.allclose(b, b_new[:99])): print("1.3 correct")
-else: print("1.3 incorrect")
-
-#Problem 1.4
-tb = b*(1/t[:99])
-eps = 1e-6
-lim = 8/89
-stb = np.cumsum(tb)
-if (abs(stb[-1] - lim) < eps): print("1.4 correct")
-else: print("1.4 incorrect")

@@ -30,7 +30,7 @@ vec_f2 = scipy.vectorize(f2)
 alpha = (1 + np.sqrt(5))/2
 beta = (1 - np.sqrt(5))/2
 
-n = np.arrange(1,100)
+n = np.arange(1,100)
 
 l1 = vec_f1(n,alpha,beta)
 l2 = vec_f2(n,alpha,beta)
@@ -40,9 +40,9 @@ plt.plot(n, l1, label=r'$a_{n+2}-1$', color = 'r')
 plt.grid()
 plt.legend()
 plt.subplot(212)
-plt.plot(n, l2, label=r'$sum_{k=1}^{n}a_{k}$')
+plt.plot(n, l2, label=r'$\sum_{k=1}^{n}a_{k}$')
 plt.grid()
 plt.legend()
 plt.savefig('../figs/1_1.png')
-
+plt.show()
 

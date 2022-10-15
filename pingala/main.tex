@@ -4,7 +4,7 @@
 \usepackage{gensymb}
 \usepackage{xcolor}
 \usepackage{polynom}
-%\usepackage{caption}
+\usepackage{caption}
 %\usepackage{subcaption}
 %\doublespacing
 \singlespacing
@@ -151,40 +151,57 @@ columns=fullflexible
 \noindent Let $\alpha$ and $\beta$ ($\alpha > \beta$) be the roots of the equation $z^2-z-1=0$. Define,
 
 \begin{align}
-     a_n & = \frac{\alpha^n-\beta^n}{\alpha-\beta}, \quad n \ge 1\\
-     b_n & = a_{n-1} - a_{n+1}, \quad n \ge 2, \quad b_1 = 1
+	a_n & = \frac{\alpha^n-\beta^n}{\alpha-\beta}, \quad n \ge 1\\
+	b_n & = a_{n-1} - a_{n+1}, \quad n \ge 2, \quad b_1 = 1
 \end{align}
+
 \noindent Verify the following using a python code.
+
 \begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
-\item 
-\begin{align}
-     \sum_{k=1}^na_k = a_{n+2}-1, \quad n \ge 1
-\end{align}
+	
+	Download the Python code using
+	
+	\begin{lstlisting}
+		wget https://https://github.com/HARI-donk-EY/sig_pros/tree/main/pingala/codes/1.py
+	\end{lstlisting}
 
-\item 
-\begin{align}
-     \sum_{k=1}^\infty\frac{a_k}{10^k} = \frac{10}{89}
-\end{align}
+	and run it using,
+	
+	\begin{lstlisting}
+		$python3 1.py
+	\end{lstlisting}
+	
+	\item
+	\begin{align}
+     		\sum_{k=1}^na_k = a_{n+2}-1, \quad n \ge 1
+	\end{align}
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\columnwidth]{figs/1_1}
+		\caption{}
+	\end{figure}
 
-\item 
-\begin{align}
-     b_n = \alpha^n + \beta^n, \quad n \ge 1
-\end{align}
+	\item 
+	\begin{align}
+     		\sum_{k=1}^\infty\frac{a_k}{10^k} = \frac{10}{89}
+	\end{align}
 
-\item 
-\begin{align}
-     \sum_{k=1}^\infty\frac{b_k}{10^k}=\frac{8}{89}
-\end{align}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\columnwidth]{figs/1_2}
+		\caption{}
+	\end{figure}
 
-\solution\\
-Download the Python code using
-\begin{lstlisting}
-wget https://https://github.com/HARI-donk-EY/sig_pros/tree/main/pingala/codes/1.py
-\end{lstlisting}
-and run it using,
-\begin{lstlisting}
-$python3 1.py
-\end{lstlisting}
+	\item 
+	\begin{align}
+    	 	b_n = \alpha^n + \beta^n, \quad n \ge 1
+	\end{align}
+
+	\item 
+	\begin{align}
+     		\sum_{k=1}^\infty\frac{b_k}{10^k}=\frac{8}{89}
+	\end{align}
 
 
 

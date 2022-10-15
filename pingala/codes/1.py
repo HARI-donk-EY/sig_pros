@@ -17,6 +17,8 @@ def bn(n0, alpha, beta):
     else:
         return 0.0
 
+vec_bn = scipy.vectorize(bn)
+
 def f1(n, alpha, beta):
     return an(n+2, alpha, beta)
 
@@ -55,10 +57,29 @@ plt.show()
 
 # pblm 1.2
 
-
-
 plt.plot(n, l3, label=r'$\sum_{k=1}^{n}\frac{a_{k}}{10^k}-\frac{10}{89}$', color = 'r')
 plt.legend()
 plt.grid()
 plt.savefig('../figs/1_2.png')
+plt.show()
+
+# pblm 1.3
+
+def f4(n, alpha, beta):
+    return alpha**n + beta**n
+
+vec_f4 = scipy.vectorize(f4)
+
+l4 = vec_bn(n, alpha, beta)
+l5 = vec_f4(n, alpha, beta)
+
+plt.subplot(211)
+plt.plot(n, l4, label=r'$b_{n}', color = 'r')
+plt.grid()
+plt.legend()
+plt.subplot(212)
+plt.plot(n, l5, label=r'$\alpha^n+\beta^n$')
+plt.grid()
+plt.legend()
+plt.savefig('../figs/1_3.png')
 plt.show()

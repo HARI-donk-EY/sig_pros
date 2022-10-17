@@ -1,9 +1,9 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.10.14)  17 OCT 2022 04:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020/Debian) (preloaded format=pdflatex 2022.10.14)  17 OCT 2022 04:27
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**pingala/main.tex
+(./pingala/main.tex
 LaTeX2e <2020-10-01> patch level 4
 L3 programming layer <2021-01-09> xparse <2020-03-03>
 (/usr/share/texlive/texmf-dist/tex/latex/IEEEtran/IEEEtran.cls
@@ -596,13 +596,13 @@ File: l3backend-pdftex.def 2020-01-29 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count312
 \l__pdf_internal_box=\box59
 )
-(./main.aux)
+No file main.aux.
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/txmi/m/it on input line 76.
 LaTeX Font Info:    Trying to load font information for OML+txmi on input line 
 76.
- (/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
+(/usr/share/texlive/texmf-dist/tex/latex/txfonts/omltxmi.fd
 File: omltxmi.fd 2000/12/15 v3.1
 )
 LaTeX Font Info:    ... okay on input line 76.
@@ -744,8 +744,6 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 76.
 LaTeX Info: Redefining \pageref on input line 76.
 LaTeX Info: Redefining \nameref on input line 76.
-
-(./main.out) (./main.out)
 \@outlinefile=\write3
 \openout3 = `main.out'.
 
@@ -757,7 +755,6 @@ LaTeX Info: Redefining \nameref on input line 76.
 \c@example=\count325
 \c@definition=\count326
 \c@rem=\count327
- (./main.toc)
 \tf@toc=\write4
 \openout4 = `main.toc'.
 
@@ -797,58 +794,36 @@ LaTeX Font Info:    Trying to load font information for TS1+txr on input line 1
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
 )
-<figs/1_1.png, id=15, 462.528pt x 346.896pt>
-File: figs/1_1.png Graphic file (type png)
-<use figs/1_1.png>
-Package pdftex.def Info: figs/1_1.png  used on input line 185.
-(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
-<figs/1_2.png, id=18, 462.528pt x 346.896pt>
-File: figs/1_2.png Graphic file (type png)
-<use figs/1_2.png>
-Package pdftex.def Info: figs/1_2.png  used on input line 206.
-(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
-<figs/1_3.png, id=20, 462.528pt x 346.896pt>
-File: figs/1_3.png Graphic file (type png)
-<use figs/1_3.png>
-Package pdftex.def Info: figs/1_3.png  used on input line 223.
-(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
- [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+LaTeX Warning: Reference `fig:1.1' on page 1 undefined on input line 180.
 
 
- <./figs/1_1.png> <./figs/1_2.png>]
-<figs/1_4.png, id=56, 462.528pt x 346.896pt>
-File: figs/1_4.png Graphic file (type png)
-<use figs/1_4.png>
-Package pdftex.def Info: figs/1_4.png  used on input line 244.
-(pdftex.def)             Requested size: 176.39923pt x 132.29823pt.
- [2
+! LaTeX Error: File `figs/1_1' not found.
 
- <./figs/1_3.png> <./figs/1_4.png>] (./main.aux)
-Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 3FA7F4E82AD4378309F8D9C92AD0DCCC;78.
- ) 
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.185 ...graphics[width=0.7\columnwidth]{figs/1_1}
+                                                  
+? 
+! Emergency stop.
+ ...                                              
+                                                  
+l.185 ...graphics[width=0.7\columnwidth]{figs/1_1}
+                                                  
+I could not locate the file with any of these extensions:
+.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+ 
 Here is how much of TeX's memory you used:
- 13227 strings out of 479304
- 200652 string characters out of 5869778
- 721217 words of memory out of 5000000
- 30158 multiletter control sequences out of 15000+600000
- 461859 words of font info for 144 fonts, out of 8000000 for 9000
+ 13160 strings out of 479304
+ 199996 string characters out of 5869778
+ 699217 words of memory out of 5000000
+ 30133 multiletter control sequences out of 15000+600000
+ 451839 words of font info for 128 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 71i,8n,74p,232b,1536s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
-e/texmf-dist/fonts/type1/public/txfonts/rtcxr.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/public/txfonts/rtxmi.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/txfonts/rtxr.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/tx
-fonts/rtxsc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txex.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/ti
-mes/utmri8a.pfb>
-Output written on main.pdf (2 pages, 112760 bytes).
-PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
- 84 compressed objects within 1 object stream
- 25 named destinations out of 1000 (max. 500000)
- 37 words of extra memory for PDF output out of 10000 (max. 10000000)
-
+ 71i,8n,74p,240b,1536s stack positions out of 5000i,500n,10000p,200000b,80000s
+!  ==> Fatal error occurred, no output PDF file produced!

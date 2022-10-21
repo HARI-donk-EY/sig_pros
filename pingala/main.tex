@@ -172,87 +172,113 @@ columns=fullflexible
 	\end{lstlisting}
 	
 	\item
-	\begin{align}
-     		\sum_{k=1}^na_k = a_{n+2}-1, \quad n \ge 1
-	\end{align}
+		\begin{align}
+	     		\sum_{k=1}^na_k = a_{n+2}-1, \quad n \ge 1
+		\end{align}
 	
 	\solution\\
-	From Fig. \ref{fig:1.1}, both the graphs are similar for $LHS$ and $RHS$.\\ 
-	Hence 1.1 is true.
+		From Fig. \ref{fig:1.1}, both the graphs are similar for $LHS$ and $RHS$.\\ 
+		Hence 1.1 is true.
 
-	\begin{figure}[ht]
-		\begin{center}
-			\includegraphics[width=0.7\columnwidth]{figs/1_1}
-		\end{center}
-		\captionof{figure}{}
-		\label{fig:1.1}    
-	\end{figure}
-		
+		\begin{figure}[ht]
+			\begin{center}
+				\includegraphics[width=0.7\columnwidth]{figs/1_1}
+			\end{center}
+			\captionof{figure}{}
+			\label{fig:1.1}    
+		\end{figure}
+			
 	\item 
-	\begin{align}
-     		\sum_{k=1}^\infty\frac{a_k}{10^k} = \frac{10}{89}
-	\end{align}
+		\begin{align}
+	     		\sum_{k=1}^\infty\frac{a_k}{10^k} = \frac{10}{89}
+		\end{align}
 
 	\solution
-	The Fig. \ref{fig:1.2} shoes that the difference between $LHS$ and $RHS$ tens to zero as the value of $k$ increases.\\
-	It shows that for a large value of $k$, the
-	\begin{align*}
-		LHS \to RHS	
-	\end{align*}
-	Hence 1.2 is true.
-
-	\begin{figure}[ht]
-		\begin{center}
-			\includegraphics[width=0.7\columnwidth]{figs/1_2}
-		\end{center}
-		\captionof{figure}{}
-		\label{fig:1.2}    
-	\end{figure}
+		The Fig. \ref{fig:1.2} shoes that the difference between $LHS$ and $RHS$ tens to zero as the value of $k$ increases.\\
+		It shows that for a large value of $k$, the
+		\begin{align*}
+			LHS \to RHS	
+		\end{align*}
+		Hence 1.2 is true.
+	
+		\begin{figure}[ht]
+			\begin{center}
+				\includegraphics[width=0.7\columnwidth]{figs/1_2}
+			\end{center}
+			\captionof{figure}{}
+			\label{fig:1.2}    
+		\end{figure}
 
 	\item 
-	\begin{align}
-    	 	b_n = \alpha^n + \beta^n, \quad n \ge 1
-	\end{align}
-
+		\begin{align}
+    		 	b_n = \alpha^n + \beta^n, \quad n \ge 1
+		\end{align}
+	
 	\solution	
-	From Fig. \ref{fig:1.3}, both the graphs are similar for $LHS$ and $RHS$.\\ 
-	Hence 1.3 is true.
+		From Fig. \ref{fig:1.3}, both the graphs are similar for $LHS$ and $RHS$.\\ 
+		Hence 1.3 is true.
 
-	\begin{figure}[ht]
-		\begin{center}
-			\includegraphics[width=0.7\columnwidth]{figs/1_3}
-		\end{center}
-		\captionof{figure}{}
-		\label{fig:1.3}    
-	\end{figure}
+		\begin{figure}[ht]
+			\begin{center}
+				\includegraphics[width=0.7\columnwidth]{figs/1_3}
+			\end{center}
+			\captionof{figure}{}
+			\label{fig:1.3}    
+		\end{figure}
 
 	\item 
-	\begin{align}
-     		\sum_{k=1}^\infty\frac{b_k}{10^k}=\frac{8}{89}
-	\end{align}
+		\begin{align}
+     			\sum_{k=1}^\infty\frac{b_k}{10^k}=\frac{8}{89}
+		\end{align}
 
 	\solution\\ 
-	The Fig. \ref{fig:1.4} shoes that the difference between $LHS$ and $RHS$ tends to $\frac{12}{89}$ as the value of $k$ increases.\\
-	It shows that for a large value of $k$, the
-	\begin{align*}
-		LHS \nrightarrow RHS	
-	\end{align*}
-	Hence 1.4 is false.
-
-	\begin{figure}[ht]
-		\begin{center}
-			\includegraphics[width=0.7\columnwidth]{figs/1_4}
-		\end{center}
-		\captionof{figure}{}
-		\label{fig:1.4}    
-	\end{figure}
+		The Fig. \ref{fig:1.4} shoes that the difference between $LHS$ and $RHS$ tends to $\frac{12}{89}$ as the value of $k$ increases.\\
+		It shows that for a large value of $k$, the
+		\begin{align*}
+			LHS \nrightarrow RHS	
+		\end{align*}
+		Hence 1.4 is false.
+	
+		\begin{figure}[ht]
+			\begin{center}
+				\includegraphics[width=0.7\columnwidth]{figs/1_4}
+			\end{center}
+			\captionof{figure}{}
+			\label{fig:1.4}    
+		\end{figure}
 \end{enumerate}
 
-\section{}
+\section{Pingala Series}
 \begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
 	
-	\item 
+	\item The $one\ sided$ $Z$-transform of $x(n)$ is defined as
+		\begin{align}
+			X^+(z) = \sum_{n=0}^\infty x(n)z^{-n}, \quad z \in \mathbb{C}
+			\label{eq:one-Z}
+		\end{align}
 
+	\item The {\em Pingala} series is generated using the difference equation  
+		\begin{align} 
+			x(n+2) = x\brak{n+1} + x\brak{n}\\ 
+			x(0) = x(1) = 1, n \ge 0 
+			\label{eq:10-pingala} 
+		\end{align} 
+		Generate a stem plot for $x(n)$.\\
+
+	\solution\\
+		Obtain the python code to generate the plot using 
+		\begin{lstlisting}
+			
+		\end{lstlisting}
+		
+
+	\item Find $X^{+}(z)$.\\
+
+	\item Find $x(n)$.\\
+
+	\item Find $Y^{+}(z)$.
+	
+	
 \end{enumerate}
 
 \end{document}

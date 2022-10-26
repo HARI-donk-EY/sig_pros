@@ -405,4 +405,53 @@ $ python3 2_5.py
 
 \end{enumerate}
 
+\section{POWER OF THE Z TRANSFORM}
+\begin{enumerate}[label=\thesection.\arabic*,ref=\thesection.\theenumi]
+	
+	\item Show that.
+		\begin{align}
+			\sum_{k=1}^{n} a_k = \sum_{k=0}^{n-1} = x(n) * u(n-1)
+		\end{align}
+	\solution\\
+		\begin{align}
+			& x(k) = a(k+1)\\
+			& \implies \sum_{k=0}^{n-1} x(k) = \sum_{k=0}^{n-1} a(k+1)\\
+			& \implies \sum_{k=1}^{n} a_k = \sum_{k=0}^{n-1} x(k)\\
+			& x(n) * u(n-1) = \sum_{k=-\infty}^{\infty} x(k)u(n-k-1)\\
+			& u(n-k-1) = 
+			\begin{cases}
+				0 & k < n-1\\
+				1 & k \ge n-1
+			\end{cases}\\
+			& x(k) = 0, \quad \forall k < 0\\
+			& \therefore \sum_{k=0}^{n-1} x(k) = x(n) * u(n-1)
+		\end{align}
+	
+	\item 
+		show that,
+		\begin{align}
+			a_{n+2} -1, \quad n \ge 1
+		\end{align}
+		can be expressed as,
+		\begin{align}
+			[x(n+1) -1]u(n)
+		\end{align}
+	\solution\\
+		\begin{align}
+			x(k) & = a(k+1) \\ 
+			\implies xk+1) & = a(k+2)\\
+			a(k+2) -1 & = x(k+1)-1 \\
+			\therefore a(k+2)-1 & = [x(k+2)  -1]u(k) \\
+			[\because \forall \ \ n \ge 1]
+		\end{align}
+
+	\item 
+		show that,
+		\begin{align}
+			\sum_{k=1}^{\infty}\frac{a_k}{10^k} = \frac{1}{10}\sum_{x(k)}^{10^k} = \frac{1}{10}X^+(10)
+		\end{align}
+
+
+\end{enumerate}
+
 \end{document}

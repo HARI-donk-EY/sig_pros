@@ -473,11 +473,11 @@ $ python3 2_5.py
 		Applying Z-transform on both sides,
 		\begin{align}
 			W(z)&=\sum_{n=-\infty}^{\infty}\brak{\alpha^{n+1} + \beta^{n+1}}u(n)z^{-n}\\
-			&=\sum_{n=0}^{\infty}\brak{\alpha^{n+1} + \beta^{n+1}}z^{-n}\\
-			&=\alpha \sum_{n=0}^{\infty}(\alpha z^{-1})^{n}+\beta \sum_{n=0}^{\infty} (\beta z^{-1})^{n}\\
+			& = \sum_{n=0}^{\infty}\brak{\alpha^{n+1} + \beta^{n+1}}z^{-n}\\
+			& = \alpha \sum_{n=0}^{\infty}(\alpha z^{-1})^{n}+\beta \sum_{n=0}^{\infty} (\beta z^{-1})^{n}\\
 			\text{ROC:} & \quad |z|>\text{max}(\alpha,\beta) \nonumber \\
-			&=\frac{\alpha}{1-\alpha z^{-1}}+\frac{\beta}{1-\beta z^{-1}}\\
-			&=\frac{1+2z^{-1}}{1-z^{-1}-z^{-2}}
+			& = \frac{\alpha}{1-\alpha z^{-1}}+\frac{\beta}{1-\beta z^{-1}}\\
+			& = \frac{1+2z^{-1}}{1-z^{-1}-z^{-2}}
 		\end{align}
 
 		\item 
@@ -489,11 +489,11 @@ $ python3 2_5.py
 		\solution\\
 			\begin{align}
 				y(k)&=b(k+1)\\
-				\sum_{k=0}^{\infty} y(k) z^{-k}&=\sum_{k=0}^{\infty} b(k+1) z^{-k}\\ &=Y^{+}(z)\\
-				\sum_{k=0}^{\infty} y(k) z^{-k}&=z\sum_{k=1}^{\infty} b(k) z^{-k}\\ &=Y^{+}(z)\\
+				\sum_{k=0}^{\infty} y(k) z^{-k}&=\sum_{k=0}^{\infty} b(k+1) z^{-k}\\ & = Y^{+}(z)\\
+				\sum_{k=0}^{\infty} y(k) z^{-k}&=z\sum_{k=1}^{\infty} b(k) z^{-k}\\ & = Y^{+}(z)\\
 				\text{Assume:}& \quad z=10\\
 				\therefore \sum_{k=1}^{\infty}\frac{b_k}{10^k} & =
-				\frac{1}{10}\sum_{k=0}^{\infty}\frac{y\brak{k}}{10^k}\\ &=\frac{1}{10}Y^{+}\brak{{10}}
+				\frac{1}{10}\sum_{k=0}^{\infty}\frac{y\brak{k}}{10^k}\\ & = \frac{1}{10}Y^{+}\brak{{10}}
 			\end{align}
 	
 		\item 
@@ -501,10 +501,10 @@ $ python3 2_5.py
 		\solution\\
 			1.2\\
 			\begin{align}
-				X^{+}(z) & =z\sum_{k=1}^{\infty} a(k) z^{-k}\\ & =\frac{1}{1-z^{-1}-z^{-2}}\\ \ \nonumber \\
+				X^{+}(z) & = z\sum_{k=1}^{\infty} a(k) z^{-k}\\ & =\frac{1}{1-z^{-1}-z^{-2}}\\ \ \nonumber \\
 				\text{Assume:}& \quad z=10\\
-				\sum_{k=1}^{\infty} \frac{a_k}{10^k} & =\frac{1}{10 \left(1-\frac{1}{10}-\frac{1}{100}\right)}\\
-				&=\frac{10}{89}
+				\sum_{k=1}^{\infty} \frac{a_k}{10^k} & = \frac{1}{10 \left(1-\frac{1}{10}-\frac{1}{100}\right)}\\
+				& = \frac{10}{89}
 			\end{align}
 			1.3\\
 			\begin{align}
@@ -515,9 +515,9 @@ $ python3 2_5.py
 			1.4\\
 			\begin{align}
 				\sum_{k=1}^{\infty}\frac{b_k}{10^k} & = \frac{1}{10}Y^{+}\brak{{10}}\\
-				&=\frac{1}{10}\left[\frac{1+\frac{2}{10}}{1-\frac{1}{10}-\frac{1}{100}}\right]\\
+				& = \frac{1}{10}\left[\frac{1+\frac{2}{10}}{1-\frac{1}{10}-\frac{1}{100}}\right]\\
 				\because Y^{+}(z) & =\frac{1+2z^{-1}}{1-z^{-1}-z^{-2}}\\
-				&=\frac{12}{89}
+				& = \frac{12}{89}
 			\end{align}
 			Run the following code to get the expressions of $x(n)$ and $y(n)$
 			\begin{lstlisting}

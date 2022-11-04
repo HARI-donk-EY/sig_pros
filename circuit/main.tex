@@ -150,5 +150,117 @@
 				\caption{Circuit diagram of the circuit in question}
 				\label{fig:ckt}
 			\end{figure}
+
+		\item Find $q_1$.
+
+		\solution\\
+			After a long time when a steady state is achieved, a capacitor behaves like an open circuit, that is, current passing through it is zero.\\
+			\begin{figure}[!ht]
+				\centering 
+				\begin{circuitikz} \draw 
+					(0,3) to[battery1, l =1<\volt>] (0,0) node[label={below:0}]{}
+						-- (8,0) node[label={below:0}]{}
+					(8,3) node[label={above:2}]{} to[battery1, l=2<\volt>] (8,0)
+					(4,3) node[label={above:$V$}] {} to[R=$2\,\Omega$] (8,3)
+					(4,3) to[R, l_=$1\,\Omega$] (0,3) node[label={above:1}]{}
+					(4,0) node[ground]{}
+					;
+				\end{circuitikz}
+				\caption{Circuit diagram at steady state before flipping the switch}
+			\end{figure}
+
+			By Kirchoff's Law we can get,
+
+			\begin{align}
+				\frac{V-1}{1} & - \frac{V-2}{2} = 0\\
+				\implies & V = \SI[parse-numbers=false]{\frac{4}{3}}{\volt}\\
+				\implies & q_1 = CV = \SI[parse-numbers=false]{\frac{4}{3}}{\micro\coulomb}
+			\end{align}\ \\ \ \\ \ \\
+
+		\item Show that the Laplace Transform of $u(t)$ is $\frac{1}{s}$ and find the ROC.\\
+
+		\solution\\
+			The Laplace Transform of $u(t)$ is given by,
+			\begin{align}
+				\mathcal{L}\cbrak{u(t)} & = \int_{-\infty}^\infty u(t) e^{-st} dt \\
+							& = \int_0^\infty e^{-st} dt\\
+							& = \lim_{R \to \infty} \frac{1-e^{-sR}}{s}
+			\end{align}
+			This limit is finite only if $\Re(s) > 0$, which is going to be its $ROC$.\\
+
+			Therefore, 
+			\begin{align}
+				u(t) \system{L} \frac{1}{s} \qquad \Re(s) > 0 
+			\end{align}
+
+		\item Show that,
+			\begin{align}
+				e^{-at}u(t) \system{L} \frac{1}{s+a} \qquad a > 0
+			\end{align}
+			and find $ROC$.
+
+		\solution\\
+			The Laplace Transform of $e^{-at}u(t)$ for $a > 0$ is given by,
+			\begin{align}
+				\mathcal{L}\cbrak{u(t)} & = \int_{-\infty}^\infty e^{-at} u(t) e^{-st} dt \\
+							& = \int_0^\infty e^{-(s+a)t} dt\\
+							& = \lim_{R \to \infty} \frac{1-e^{-(s+a)R}}{s+a}
+			\end{align}
+			This limit is finite only if $\Re(s+a)>0$, which is going to be its ROC
+
+			Therefore
+			\begin{align}
+				e^{-at}u(t)\system{L}\frac{1}{s+a}\qquad\Re(s)>-a
+			\end{align}
+			since $a$ is real.
+		\item Now consider the following resistive circuit transformed from Fig. \ref{fig:ckt}\\
+			\begin{figure}[!ht]
+				\centering
+				\begin{circuitikz} \draw
+					(0,3) to[battery1, l_=$V_1(s)$] (0,0) node[label={below:0}]{}
+						-- (6,0) node[label={below:0}]{}
+					(6,3) node[label={above:$V_2$}]{} to[battery1, l_=$V_2(s)$] (6,0)
+					(3,3) node[label={above:$V_c(s)$}] {} to[generic, l=$R_2$] (6,3)
+					(3,3) to[generic, l_=$R_1$] (0,3) node[label={above:$V_1$}]{}
+					(3,0) node[ground]{} to[generic, l=$\frac{1}{sC_0}$] (3,3)
+					;
+				\end{circuitikz}
+				\caption{Circuit diagram in $s$-domain before flipping the switch}
+				\label{fig:lap}
+			\end{figure}
+			where
+			\begin{align}
+				u(t) \system{L} V_1(s)\\
+				2u(t) \system{L} V_2(s)
+			\end{align}
+			Find the voltage across the capacitor $V_c(s)$\\
+
+		\solution\\
+			\begin{align}
+				V_1(s) & = \frac{1}{s}\qquad \Re(s) > 0\\
+				V_2(s) & = \frac{2}{s}\qquad \Re(s) > 0\\
+			\end{align}
+
+			By Kirchoff's Junction Law, we get,
+
+			\begin{align}
+				\frac{V_c - V_1}{R_1} + \frac{V_c - V_2}{R_2} & +\frac{V_c - 0}{\frac{1}{sC_0}} = 0\\
+				V_c\left( \frac{1}{R_1} + \frac{1}{R_2} + sC_0 \right) & = \frac{V_1}{R_1} + \frac{V_2}{R_2} \\
+				V_c(s) & = \frac{\frac{1}{sR_1} + \frac{2}{sR_2}}{\frac{1}{R_1}+\frac{1}{R_2}+sC_0}\\
+				V_c(s) & = \frac{\frac{1}{R_1C_0} + \frac{2}{R_2C_0}}{s\left( s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0} \right)}
+			\end{align}
+
+		\item Find $v_c(t)$. Plot the graph using Python.\\
+
+		\solution\\
+			Upon performing the partial fraction decomposition upon the above obtained result, we get,
+			\begin{align}
+				V_c(s) & = \frac{\frac{1}{R_1C_0} + \frac{2}{R_2C_0}}{\frac{1}{R_1C_0} + \frac{1}{R_2C_0}}\left( \frac{1}{s} - \frac{1}{s} + \frac{1}{R_1C_0} + \frac{1}{R_2C_0} \right), \ \ \Re(s) > 0
+			\end{align}
+			On taking the inverse Laplace Transform we get,
+			\begin{align}
+				v_c(t) & = \frac{2R_1 + R_2}{R_1 + R_2}\left( u(t) - e^{-\left(\frac{1}{R_1} + \frac{1}{R_2}\right)\frac{1}{C_0}} \right)
+			\end{align}
+			
 	\end{enumerate}
 \end{document}

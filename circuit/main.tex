@@ -131,9 +131,10 @@
 	
 		\item In the circuit, the switch S is connected to position P for a long time so that the charge on the capacitor becomes $q_1$ \SI{}{\micro\coulomb}. Then S is switched to position Q.  After a long time, the charge on the capacitor is $q_2$ \SI{}{\micro\coulomb}\\
 	
-		\item Draw the circuit using latex-tikz
+		\item Draw the circuit using latex-tikz\\
 	
-		\solution
+		\solution\\
+			The following figure Fig. \ref{fig:ckt} is drawn using latex-tikz for the defined circuit.\\
 
 			\begin{figure}[!ht]
 			\centering
@@ -410,7 +411,7 @@ $  python3 2_8.py
 				\implies &V_c(s) = \frac{\frac{2}{sR_2} + \frac{4}{3}C_0}{\frac{1}{R_1} + \frac{1}{R_2} + sC_0} \\
 				&\qquad = \frac{\frac{2}{R_2C_0} + \frac43 s}{s\brak{s + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}}} 
 			\end{align}
-		
+
 		\item Find $v_c(t)$. Plot using Python\\
 	
 		\solution On performing partial fraction decomposition
@@ -688,6 +689,55 @@ $  python3 4_3.py
 			\begin{align}
 				h(n) = \frac{c}{b}\delta(n)+\frac{c}{a}\brak{1-\frac{a}{b}}\brak{\frac{a}{b}}^nu(n)
 			\end{align}
+
+		\item Find $v(n)$. Verify using ngspice and the differential equation.\\
+			
+		\solution\\
+			We have,
+			\begin{align}
+				H(z) & = \frac{\frac{1}{R_2C_0}}{\frac{2}{T}\frac{1-z^{-1}}{1+z^{-1}} + \frac{1}{R_1C_0} + \frac{1}{R_2C_0}} \\
+				     & = \frac{\frac{1}{R_2C_0}}{\frac{2}{T}\frac{1-z^{-1}}{1+z^{-1}} + \frac{R_1+R_2}{R_1R_2C_0}}  \\
+				     & = \frac{\frac{1}{R_2C_0}}{\frac{2}{T}\frac{1-z^{-1}}{1+z^{-1}} + \frac{1}{\tau}}  \\
+			\end{align}
+			Here $\tau := C_0\frac{R_1R_2}{R_1+R_2}$
+			\begin{align}
+				H(z) & = \frac{T\tau\left(1+z^{-1}\right)}{C_0R_2\left((2\tau+T)-(2\tau-T)z^{-1}\right)}
+			\end{align}
+			Then,
+			\begin{align}
+				Y(z) & = H(z)X(z) \\
+				     & = \frac{2T\tau\brak{1+z^{-1}}}{C_0R_2\brak{1-z^{-1}}\brak{\brak{2\tau+T}-\brak{2\tau-T}z^{-1}}} \\
+				     & = \frac{T(z+1)}{z(2\tau+T)}\frac{1}{(1-z^{-1})\left(1-\left(\frac{2\tau-T}{2\tau+T}\right)z^{-1}\right)} \\
+				     & = \frac{\tau\brak{z+1}}{C_0R_2}\sum_{k=-\infty}^{\infty}\brak{1-p^k}u(k)z^{-k}
+			\end{align}
+
+			where $p := \frac{2\tau-T}{2\tau+T}$. Thus,
+
+			\begin{align}
+				v(n) = \frac{2\tau}{C_0R_2}\sbrak{u(n)\brak{1-p^n}+u(n+1)\brak{1-p^{n+1}}}
+			\end{align}
+
+			where $p := \frac{2\tau-1}{2\tau+1}$.\\ We take $T = 10^{-7}$ as the sampling interval. The code for verifying the result can be obtained from
+
+			\begin{lstlisting}
+$  wget https://raw.githubusercontent.com/HARI-donk-EY/sig_pros/main/circuit/codes/4_7.cir
+$  wget https://raw.githubusercontent.com/HARI-donk-EY/sig_pros/main/circuit/codes/4_7.py
+			\end{lstlisting}
+			
+			Run the codes by using the commands,
+			
+			\begin{lstlisting}
+$  ngspice 3_5.cir
+$  python3 3_5.py
+			\end{lstlisting}
+			The Fig. \ref{fig:4.7} is obtained.
+			\begin{figure}[h]
+				\begin{center}
+					\includegraphics[width=0.7\columnwidth]{figs/4_7}
+				\end{center}
+				\caption{Representation of output across $C_0$}
+				\label{fig:4.7}
+			\end{figure}
 	\end{enumerate}
 
 \end{document}

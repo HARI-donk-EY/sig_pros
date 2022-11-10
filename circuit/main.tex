@@ -717,7 +717,7 @@ $  python3 4_3.py
 				v(n) = \frac{2\tau}{C_0R_2}\sbrak{u(n)\brak{1-p^n}+u(n+1)\brak{1-p^{n+1}}}
 			\end{align}
 
-			where $p := \frac{2\tau-1}{2\tau+1}$.\\ We take $T = 10^{-7}$ as the sampling interval. The code for verifying the result can be obtained from
+			We take $T = 10^{-7}$ as the sampling interval. The code for verifying the result can be obtained from
 
 			\begin{lstlisting}
 $  wget https://raw.githubusercontent.com/HARI-donk-EY/sig_pros/main/circuit/codes/4_7.cir
@@ -727,13 +727,13 @@ $  wget https://raw.githubusercontent.com/HARI-donk-EY/sig_pros/main/circuit/cod
 			Run the codes by using the commands,
 			
 			\begin{lstlisting}
-$  ngspice 3_5.cir
-$  python3 3_5.py
+$  ngspice 4_7.cir
+$  python3 4_7.py
 			\end{lstlisting}
 			The Fig. \ref{fig:4.7} is obtained.
 			\begin{figure}[h]
 				\begin{center}
-					\includegraphics[width=0.7\columnwidth]{figs/4_7}
+					\includegraphics[width=\columnwidth]{figs/4_7}
 				\end{center}
 				\caption{Representation of output across $C_0$}
 				\label{fig:4.7}
@@ -741,3 +741,4 @@ $  python3 3_5.py
 	\end{enumerate}
 
 \end{document}
+

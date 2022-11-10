@@ -8,6 +8,7 @@ V2 1 0 dc 2V
 .control
 run
 wrdata 4_7.dat v(X)
+quit
 .endc
 
 .end
